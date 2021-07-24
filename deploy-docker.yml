@@ -3,9 +3,9 @@
   gather_facts: no
   become: True
   tasks:
-    - name: Install python pip
+    - name: Install python pip3
       yum:
-        name: python-pip
+        name: python3-pip
         state: present
     - name: Install docker
       yum:
