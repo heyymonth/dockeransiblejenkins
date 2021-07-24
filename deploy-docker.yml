@@ -1,5 +1,6 @@
 ---
 - hosts: dev
+  gather_facts: no
   become: True
   tasks:
     - name: Install python pip
