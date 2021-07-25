@@ -5,32 +5,39 @@
   tasks:
     - name: Install aptitude using apt
       apt: name=aptitude state=latest update_cache=yes force_apt_get=yes
-
+      run_once: yes
+      
     - name: Install required system packages
       apt: name={{ item }} state=latest update_cache=yes
       loop: [ 'apt-transport-https', 'ca-certificates', 'software-properties-common', 'python3-pip', 'virtualenv', 'python3-setuptools']
+      run_once: yes
 
     - name: Add Docker GPG apt Key
       apt_key:
        url: https://download.docker.com/linux/ubuntu/gpg
        state: present
+      run_once: yes
 
     - name: Add Docker Repository
       apt_repository:
        repo: deb https://download.docker.com/linux/ubuntu bionic stable
        state: present
-
+      run_once: yes
+       
     - name: Update apt and install docker-ce
       apt: update_cache=yes name=docker-ce state=latest
-
+      run_once: yes
+      
     - name: Install Docker Module for Python
       pip:
        name: docker
-       
+      run_once: yes
+      
     - name: Install Pip Docker Module for Python
       pip:
        name: docker-py
-       
+      run_once: yes
+      
     - name: Start the container
       become: yes
       docker_container:
