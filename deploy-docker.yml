@@ -28,10 +28,10 @@
       apt: update_cache=yes name=docker-ce state=latest
       run_once: yes
       
-    - name: Install Docker Module for Python
-      pip:
-       name: docker
-      run_once: yes
+#    - name: Install Docker Module for Python
+#      pip:
+#       name: docker
+#      run_once: yes
       
     - name: Install Pip Docker Module for Python
       pip:
