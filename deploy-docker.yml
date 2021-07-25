@@ -30,14 +30,18 @@
         update_cache: "yes" 
         force_apt_get: "yes"
 
-    - name: Install docker-py python module
-      pip:
-        name: python-docker
-        state: present
-    - name: Install docker-py python module
-      pip:
-        name: docker-py
-        state: present    
+- name: get the facts for default pip, pip2 and pip3.6
+  pip_package_info:
+    clients: ['python-docker', 'docker-py', 'pip3.6']
+    
+#    - name: Install docker-py python module
+#      pip:
+#        name: python-docker
+#        state: present
+#    - name: Install docker-py python module
+#      pip:
+#       name: docker-py
+#        state: present    
     - name: Start the container
       docker_container:
         name: ci-cd-app
