@@ -26,11 +26,6 @@
     - name: Install Docker Module for Python
       pip:
        name: docker
-       
-    - name: Pull default Docker image
-      docker_image:
-       name: "heyymonth/testimage:{{DOCKER_TAG}}"
-       source: pull
 
     - name: Start the container
       docker_container:
