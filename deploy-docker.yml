@@ -3,9 +3,19 @@
   become: True
   gather_facts: no
   tasks:
+    - name: Check for Python
+      raw: test -e /usr/bin/python
+      changed_when: false
+      failed_when: false
+      register: check_python
+
+    - name: Install Python
+      raw: yum -y install python
+      when: check_python.rc != 0
+      
     - name: Install python pip
       yum:
-        name: python3-pip
+        name: python-pip
         state: present
     - name: Install docker
       yum:
