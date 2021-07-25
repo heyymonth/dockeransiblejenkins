@@ -30,9 +30,9 @@
         update_cache: "yes" 
         force_apt_get: "yes"
 
-- name: get the facts for default pip, pip2 and pip3.6
-  pip_package_info:
-    clients: ['python-docker', 'docker-py', 'pip3.6']
+    - name: get the facts for default pip, pip2 and pip3.6
+      pip_package_info:
+        clients: ['python-docker', 'docker-py', 'pip3.6']
     
 #    - name: Install docker-py python module
 #      pip:
