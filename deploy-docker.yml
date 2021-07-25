@@ -26,7 +26,11 @@
     - name: Install Docker Module for Python
       pip:
        name: docker
-
+       
+    - name: Install Pip Docker Module for Python
+      pip:
+       name: docker-py
+       
     - name: Start the container
       docker_container:
         name: hariapp
