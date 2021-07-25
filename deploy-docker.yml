@@ -33,9 +33,9 @@
        
     - name: RStart the container
       community.docker.docker_container:
-      name: mytest-container
-      image: "heyymonth/testimage:{{DOCKER_TAG}}"
-      state: present
-      recreate: yes
-      exposed_ports:
-        - 8080
+        name: mytest-container
+        image: "heyymonth/testimage:{{DOCKER_TAG}}"
+        state: present
+        recreate: yes
+        exposed_ports:
+          - 8080
