@@ -29,7 +29,7 @@
        
     - name: Pull default Docker image
       docker_image:
-       name: "{{ container_image }}"
+       name: "heyymonth/testimage:{{DOCKER_TAG}}"
        source: pull
 
     - name: Start the container
