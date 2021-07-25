@@ -9,10 +9,6 @@
     - name: Install aptitude using apt
       apt: name=aptitude state=latest update_cache=yes force_apt_get=yes
 
-    - name: Install required system packages
-      apt: name={{ item }} state=latest update_cache=yes
-      loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'python-docker', 'software-properties-common', 'python3-pip', 'virtualenv', 'python3-setuptools']
-
     - name: Add Docker GPG apt Key
       apt_key:
         url: https://download.docker.com/linux/ubuntu/gpg
@@ -22,6 +18,9 @@
       apt_repository:
         repo: deb https://download.docker.com/linux/ubuntu bionic stable
         state: present
+    - name: Install required system packages
+      apt: name={{ item }} state=latest update_cache=yes
+      loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'python3-pip', 'virtualenv', 'python3-setuptools']
 
     - name: Update apt and install docker-ce
       apt: update_cache=yes name=docker-ce state=latest
@@ -33,8 +32,12 @@
 
     - name: Install docker-py python module
       pip:
-        name: docker-py
+        name: python-docker
         state: present
+    - name: Install docker-py python module
+      pip:
+        name: docker-py
+        state: present    
     - name: Start the container
       docker_container:
         name: ci-cd-app
