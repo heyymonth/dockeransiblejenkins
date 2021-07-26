@@ -20,7 +20,6 @@
           - virtualenv 
           - python3-setuptools
         state: present
-      run_once: yes
       
     - name: Add Docker GPG apt Key
       apt_key:
