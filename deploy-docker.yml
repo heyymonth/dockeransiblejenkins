@@ -7,19 +7,21 @@
       apt: name=aptitude state=latest update_cache=yes force_apt_get=yes
       run_once: yes
       
-    - name: Install required system packages
+#    - name: Install required system packages
 #      apt: name={{ item }} state=latest update_cache=yes
 #        loop: ['apt-transport-https', 'ca-certificates', 'software-properties-common', 'python3-pip', 'virtualenv', 'python3-setuptools']
 #      run_once: yes
+    - name: Install required system packages
       apt:
-        pkg:
-          - apt-transport-https
-          - ca-certificates
-          - software-properties-common 
-          - python3-pip 
-          - virtualenv 
-          - python3-setuptools
+        name: "{{ item }}"
         state: present
+      with_items:
+         - apt-transport-https
+         - ca-certificates
+         - software-properties-common 
+         - python3-pip 
+         - virtualenv 
+         - python3-setuptools
       
     - name: Add Docker GPG apt Key
       apt_key:
