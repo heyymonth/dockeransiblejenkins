@@ -62,6 +62,9 @@
        name: docker-py
       run_once: yes
       
+    - name: Install required system packages
+      apt: name=python-docker state=latest update_cache=yes
+      
     - name: Start the container
       become: yes
       docker_container:
