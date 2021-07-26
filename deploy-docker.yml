@@ -66,7 +66,6 @@
 #      run_once: yes
       
     - name: Start the container
-      become: yes
       docker_container:
         name: test-container
         image: "heyymonth/testimage:{{DOCKER_TAG}}"
