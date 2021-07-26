@@ -60,9 +60,6 @@
         update_cache: true
       become: true
       
-    - name: Install Python Docker-Compose
-      pip:
-        name: docker-compose  
 #    - name: Install Pip Docker Module for Python
 #      pip:
 #       name: docker-py
